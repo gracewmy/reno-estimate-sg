@@ -1,0 +1,130 @@
+/**
+ * RenoEstimate SG global styles.
+ * Design note: The Quiet Renovation Ledger — tactile warm paper, charcoal ink, terracotta actions, and restrained motion.
+ */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:opsz,SOFT,WONK,wght@9..144,50,0..100,400..700&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", Georgia, serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+:root {
+  --radius: 0.75rem;
+  --background: #fbfaf7;
+  --foreground: #282522;
+  --card: #ffffff;
+  --card-foreground: #282522;
+  --popover: #ffffff;
+  --popover-foreground: #282522;
+  --primary: #b95e40;
+  --primary-foreground: #ffffff;
+  --secondary: #f2ede8;
+  --secondary-foreground: #302c28;
+  --muted: #f4f0eb;
+  --muted-foreground: #716860;
+  --accent: #f2e5dd;
+  --accent-foreground: #7f3f2d;
+  --destructive: #a33e32;
+  --destructive-foreground: #ffffff;
+  --border: #e8e1da;
+  --input: #ded5cd;
+  --ring: #b95e40;
+}
+
+@layer base {
+  * { @apply border-border outline-ring/50; }
+  html { scroll-behavior: smooth; }
+  body { @apply bg-background font-sans text-foreground antialiased; }
+  button:not(:disabled), a[href], select:not(:disabled) { @apply cursor-pointer; }
+  ::selection { background: #ead1c6; color: #282522; }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  .eyebrow {
+    color: #a9563d;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    line-height: 1.25rem;
+    text-transform: uppercase;
+  }
+
+  .hero-grain {
+    background-image:
+      radial-gradient(circle at 14% 15%, rgba(255,255,255,0.88), transparent 22rem),
+      radial-gradient(rgba(101, 77, 60, 0.06) 0.5px, transparent 0.5px);
+    background-size: auto, 6px 6px;
+  }
+
+  .worksheet-card {
+    background-image: linear-gradient(to right, transparent 0, transparent calc(100% - 20px), rgba(185, 94, 64, 0.04) calc(100% - 20px), rgba(185, 94, 64, 0.04) calc(100% - 19px), transparent calc(100% - 19px));
+  }
+
+  .ledger-panel {
+    background-image:
+      linear-gradient(to bottom, transparent 0, transparent 31px, rgba(149, 126, 111, 0.085) 32px, transparent 33px),
+      linear-gradient(120deg, rgba(185, 94, 64, 0.045), transparent 38%);
+    background-size: 100% 34px, auto;
+  }
+
+  .legal-copy h2 {
+    color: #282522;
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 1.65rem;
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1.15;
+    margin-bottom: 0.7rem;
+  }
+
+  @media (min-width: 640px) {
+    .container { padding-inline: 2rem; }
+  }
+
+  @media (min-width: 1024px) {
+    .container { max-width: 1240px; padding-inline: 2.5rem; }
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .result-reveal { animation: result-in 220ms cubic-bezier(0.23, 1, 0.32, 1) both; }
+}
+
+@keyframes result-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
